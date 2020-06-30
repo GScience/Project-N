@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Common.Utils;
+using Unity.Mathematics;
 
 namespace Common.World
 {
@@ -35,26 +36,26 @@ namespace Common.World
 
     public interface IChunk
     {
-        IBlockState GetBlock(Int3 rel);
-        int GetBlockLightness(Int3 rel);
-        void SetBlock(IBlockState state, Int3 rel);
+        IBlockState GetBlock(int3 rel);
+        int GetBlockLightness(int3 rel);
+        void SetBlock(IBlockState state, int3 rel);
     }
 
     public interface IChunkProvider
     {
-        Task<IChunk> GetAsync(Int3 position);
+        Task<IChunk> GetAsync(int3 position);
         Task SaveAsync(IChunk chunk);
     }
 
     public interface IChunkRetentionManager
     {
-        void LoadNow(Int3 position);
-        Task LoadAsync(Int3 position);
-        void UnloadNow(Int3 position);
-        Task UnloadAsync(Int3 position);
-        void FlushNow(Int3 position);
-        Task FlushAsync(Int3 position);
-        IChunk GetNow(Int3 position);
-        Task<IChunk> GetAsync(Int3 position);
+        void LoadNow(int3 position);
+        Task LoadAsync(int3 position);
+        void UnloadNow(int3 position);
+        Task UnloadAsync(int3 position);
+        void FlushNow(int3 position);
+        Task FlushAsync(int3 position);
+        IChunk GetNow(int3 position);
+        Task<IChunk> GetAsync(int3 position);
     }
 }
